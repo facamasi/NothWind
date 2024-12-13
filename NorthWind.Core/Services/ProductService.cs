@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using NothWind.Entities.Interfaces;
 using NothWind.Entities.ValueObjects;
 
-namespace NothWind.ConsoleApp1.Services;
-internal class ProductService (IUserActionWriter writer)
+namespace NothWind.ConsoleApp.Services;
+internal class ProductService (IUserActionWriter writer) : IProductService
 {
     public void Add(string user, string productName)
     {

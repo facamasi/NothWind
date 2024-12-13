@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using NothWind.Entities.Interfaces;
 using NothWind.Entities.ValueObjects;
 
-namespace NothWind.ConsoleApp1.Services;
-internal class AppLogguer (IEnumerable<IUserActionWriter> writers)
+namespace NothWind.ConsoleApp.Services;
+internal class AppLogguer (IEnumerable<IUserActionWriter> writers) : IAppLogger
 {
     public void WriteLog(string message)
     {

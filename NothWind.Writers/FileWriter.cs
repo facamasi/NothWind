@@ -7,7 +7,7 @@ using NothWind.Entities.Interfaces;
 using NothWind.Entities.ValueObjects;
 
 namespace NothWind.Writers;
-public class FileWriter : IUserActionWriter
+internal class FileWriter : IUserActionWriter
 { 
     public void Write(UserAction action)
     {

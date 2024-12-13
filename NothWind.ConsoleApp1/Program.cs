@@ -1,14 +1,13 @@
-﻿var Builder = Host.CreateApplicationBuilder();
-Builder.Services.AddSingleton<IUserActionWriter, DebugWriter>();
-Builder.Services.AddSingleton<IUserActionWriter, ConsoleWriter>();
-Builder.Services.AddSingleton<IUserActionWriter, FileWriter>();
-Builder.Services.AddSingleton<AppLogguer>();
-Builder.Services.AddSingleton<ProductService>();
+﻿using NothWind.Entities.Interfaces;
+
+HostApplicationBuilder Builder = Host.CreateApplicationBuilder();
+
+Builder.Services.AddNorthWinsServices();
+
 using IHost AppHost = Builder.Build();
 
-
-AppLogguer  Logger = AppHost.Services.GetRequiredService<AppLogguer>();
+IAppLogger Logger = AppHost.Services.GetRequiredService<IAppLogger>();
 Logger.WriteLog("Aplication started");
 
-ProductService Service = AppHost.Services.GetRequiredService<ProductService>();
+IProductService Service = AppHost.Services.GetRequiredService<IProductService>();
 Service.Add("Demo", "Azúcar refinada");

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NothWind.Entities\NothWind.Entities.csproj" />
+    <ProjectReference Include="..\NothWind.IoC\NothWind.IoC.csproj" />
     <ProjectReference Include="..\NothWind.Writers\NothWind.Writers.csproj" />
   </ItemGroup>
 

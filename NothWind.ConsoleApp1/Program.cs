@@ -1,7 +1,14 @@
-﻿IUserActionWriter Writer = new FileWriter();
+﻿var Builder = Host.CreateApplicationBuilder();
+Builder.Services.AddSingleton<IUserActionWriter, DebugWriter>();
+Builder.Services.AddSingleton<IUserActionWriter, ConsoleWriter>();
+Builder.Services.AddSingleton<IUserActionWriter, FileWriter>();
+Builder.Services.AddSingleton<AppLogguer>();
+Builder.Services.AddSingleton<ProductService>();
+using IHost AppHost = Builder.Build();
 
-AppLogguer  Logger = new AppLogguer(Writer);
+
+AppLogguer  Logger = AppHost.Services.GetRequiredService<AppLogguer>();
 Logger.WriteLog("Aplication started");
 
-ProductService Service = new ProductService(Writer);
+ProductService Service = AppHost.Services.GetRequiredService<ProductService>();
 Service.Add("Demo", "Azúcar refinada");
